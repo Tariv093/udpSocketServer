@@ -34,6 +34,7 @@ def connectionLoop(sock):
             pMessage = {"cmd": 4,"id":str(addr)}
             m = json.dumps(pMessage)
             sock.sendto(bytes(m,'utf8'), (addr[0],addr[1])
+            
 def cleanClients(sock):
    while True:
       for c in list(clients.keys()):
