@@ -24,7 +24,10 @@ def connectionLoop(sock):
             clients[addr] = {}
             clients[addr]['lastBeat'] = datetime.now()
             clients[addr]['color'] = 0
-            clients[addr]['position'] = {"X": random.uniform(-5,5), "Y": random.uniform(-5,5)}
+            clients[addr]['posX'] = random.uniform(-5,5)
+            clients[addr]['posY'] = random.uniform(-5,5)
+            clients[addr]['posZ'] = random.uniform(-5,5)
+
             message = {"cmd": 0,"id":str(addr)}
             m = json.dumps(message)
             for c in clients:
