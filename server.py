@@ -16,6 +16,7 @@ def connectionLoop(sock):
       data, addr = sock.recvfrom(1024)
       print(data)
       data = data [2 : len(data) -1]
+      print(data)
       data = json.loads(data)
       data = str(data)
       if addr in clients:
