@@ -27,14 +27,13 @@ def connectionLoop(sock):
             clients[addr]['posX'] = random.uniform(-5,5)
             clients[addr]['posY'] = random.uniform(-5,5)
             clients[addr]['posZ'] = random.uniform(-5,5)
+            message = {"cmd": 0,"id":str(addr)}
+            m2 = json.dumps(message)
+            for c in clients:
+               sock.sendto(bytes(m2,'utf8'), (c[0],c[1]))
             pMessage = {"cmd": 4,"id":str(addr)}
             m = json.dumps(pMessage)
-            sock.sendto(bytes(m,'utf8'), (clients[addr],clients[1])
-            message = {"cmd": 0,"id":str(addr)}
-            m = json.dumps(message)
-            for c in clients:
-               sock.sendto(bytes(m,'utf8'), (c[0],c[1]))
-
+            sock.sendto(bytes(m,'utf8'), (addr[0],addr[1])
 def cleanClients(sock):
    while True:
       for c in list(clients.keys()):
