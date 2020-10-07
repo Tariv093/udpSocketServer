@@ -54,7 +54,9 @@ def gameLoop(sock):
          player['id'] = str(c)
          ##player['pos'] = {"X": clients[c].position.x, "Y": clients[c].position.y, "Z": clients[c].position.z}
          player['color'] = clients[c]['color']
-         player['position'] = clients[c]['color']
+         player['posX'] = clients[c]['posX']
+         player['posY'] = clients[c]['posY']
+         player['posZ'] = clients[c]['posZ']
          GameState['players'].append(player)
       s=json.dumps(GameState)
       print(s)
