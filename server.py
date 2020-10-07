@@ -24,9 +24,9 @@ def connectionLoop(sock):
             clients[addr]['lastBeat'] = datetime.now()
             clients[addr]
          if 'updateposition' in data["cmd"]:
-            clients[addr]['posX'] = data["pos"]["X"]
-            clients[addr]['posY'] = data["pos"]["Y"]
-            clients[addr]['posZ'] = data["pos"]["Z"]   
+            clients[addr]['posX'] = data["X"]
+            clients[addr]['posY'] = data["Y"]
+            clients[addr]['posZ'] = data["Z"]   
       else:
          if 'connect' in data["cmd"]:
             clients[addr] = {}
