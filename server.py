@@ -27,7 +27,9 @@ def connectionLoop(sock):
             clients[addr]['posX'] = random.uniform(-5,5)
             clients[addr]['posY'] = random.uniform(-5,5)
             clients[addr]['posZ'] = random.uniform(-5,5)
-
+            pMessage = {"cmd": 4,"id":str(addr)}
+            m = json.dumps(pMessage)
+            sock.sendto(bytes(m,'utf8'), (clients[addr],clients[1])
             message = {"cmd": 0,"id":str(addr)}
             m = json.dumps(message)
             for c in clients:
