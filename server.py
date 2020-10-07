@@ -14,6 +14,7 @@ clients = {}
 def connectionLoop(sock):
    while True:
       data, addr = sock.recvfrom(1024)
+      print(data)
       data = data [2 : len(data) -1]
       data = json.loads(data)
       data = str(data)
