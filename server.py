@@ -14,13 +14,19 @@ clients = {}
 def connectionLoop(sock):
    while True:
       data, addr = sock.recvfrom(1024)
+      data = data [2 : len(data) -1]
+      data = json.loads(data)
       data = str(data)
       if addr in clients:
-         if 'heartbeat' in data:
+         if 'heartbeat' in data["cmd"]:
             clients[addr]['lastBeat'] = datetime.now()
             clients[addr]
+         if 'updateposition' in data["cmd"]:
+            clients[addr]['posX'] = data["pos"]["X"]
+            clients[addr]['posY'] = data["pos"]["Y"]
+            clients[addr]['posZ'] = data["pos"]["Z"]   
       else:
-         if 'connect' in data:
+         if 'connect' in data["cmd"]:
             clients[addr] = {}
             clients[addr]['lastBeat'] = datetime.now()
             clients[addr]['color'] = 0
